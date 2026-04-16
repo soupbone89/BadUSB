@@ -1,0 +1,8 @@
+void setup() { // Will be executed when the device is connected via USB
+  Keyboard.begin();
+  delay(2000);
+  rce();
+  switchLang();
+  rce();
+  }
+void loop(){ delay(3600000); setup(); } // Constantly executing code (every hour)
