@@ -1,0 +1,11 @@
+void setup(){  // Code that runs only once when the device is connected via USB
+    Keyboard.begin(); // Enable keyboard controller mode
+    delay(2000); // Pause in milliseconds
+    Keyboard.press(KEY_LEFT_SHIFT); // Hold down the keys
+    Keyboard.press(KEY_RETURN); 
+    delay(100);
+    Keyboard.releaseAll(); // Release the held keys
+    Keyboard.print("cmd /c evil command"); // Type text on the keyboard
+    Keyboard.write(KEY_RETURN); // Press the key
+  }
+void loop(){ delay(3600000); something(); } // Code that runs constantly
